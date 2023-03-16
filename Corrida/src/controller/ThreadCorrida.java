@@ -5,16 +5,13 @@ import java.util.concurrent.Semaphore;
 public class ThreadCorrida extends Thread {
 	private int Corredor;
 	private Semaphore largada;
-	private Semaphore colocação;
-	private Semaphore arruma;
+
 	private static float Equipes[] [] = new float [2][15];
 	private static int i=0;
 	
-	public ThreadCorrida (int Corredor, Semaphore largada, Semaphore colocação, Semaphore arruma) {
+	public ThreadCorrida (int Corredor, Semaphore largada) {
 		this.Corredor = Corredor;
 		this.largada = largada;
-		this.colocação = colocação;
-		this.arruma = arruma;
 	}
 	public void run () {
 
@@ -56,6 +53,7 @@ public class ThreadCorrida extends Thread {
 				Equipes[0] [VT[Vetor]] = Tempos[0];
 				Equipes[1] [VT[Vetor]] = VT[Vetor];
 				System.out.println("O carro "+VT[Vetor]+" da equipe "+Corredor/2+" saiu da corrida");
+				sleep(198);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
